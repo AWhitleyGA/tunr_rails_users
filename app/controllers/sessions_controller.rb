@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       if @user.password === params[:user][:password]
         flash[:notice] = "You're signed in!"
         session[:user_id] = @user.id
+        cookies[:username] = @user.username
         redirect_to root_path
       else
         flash[:alert] = "Wrong Password!"
